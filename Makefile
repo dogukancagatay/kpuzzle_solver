@@ -1,14 +1,17 @@
 CC=g++
-CFLAGS=-c -Wall
-LDFLAGS=
-SOURCES=kpuzzle_solver.cpp
-OBJECTS=$(SOURCES:.cpp=.o)
-	EXECUTABLE=kpuzzle_solver
+CFLAGS=-O2 -c -Wall
+LDFLAGS=-O2
+MAIN_S=kpuzzle_main.cpp
+EXEC=kpuzzle_solver
 
-all: $(SOURCES) $(EXECUTABLE)
-		
-$(EXECUTABLE): $(OBJECTS) 
-		$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+EXEC_D=kpuzzle_main.o 
+OBJS=$(EXEC_D) 
 
-.cpp.o:
-		$(CC) $(CFLAGS) $< -o $@
+$(EXEC): $(OBJS) 
+	    $(CC) $(LDFLAGS) -o $(EXEC) $(OBJS)
+
+colorSP.o: kpuzzle_main.cpp kpuzzle.hpp kpuzzle_algorithms.hpp 
+	    $(CC) $(CFLAGS) $(MAIN_S)
+
+clean:
+	    rm $(EXEC_D) $(EXEC)
