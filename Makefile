@@ -10,7 +10,7 @@ OBJS=$(EXEC_D)
 $(EXEC): $(OBJS) 
 	    $(CC) $(LDFLAGS) -o $(EXEC) $(OBJS)
 
-colorSP.o: kpuzzle_main.cpp kpuzzle.hpp kpuzzle_algorithms.hpp 
+kpuzzle_main.o: kpuzzle_main.cpp kpuzzle.hpp kpuzzle_algorithms.hpp 
 	    $(CC) $(CFLAGS) $(MAIN_S)
 
 clean:
